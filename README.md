@@ -8,8 +8,10 @@ The module challenge is the afternoon project or assignment that students work t
 
 ## Objectives
 
-- Explain function scope
+- Explain function scope 
+Since scope is the variables we currently have access to inside the code, functional scope is essentially the scope created once a function is declared. 
 - Describe what closure is, how closure is created in a program and why it is important to understand closures in JavaScript  
+Closure is a combonation of a function and its surrounding state. Basically it gives you access to an outer scope from an inner function. Closures are important because they let you associate data to a function that opperates on that data.
 
 ## Introduction
 
