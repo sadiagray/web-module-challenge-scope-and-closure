@@ -29,12 +29,13 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   
   Study the code for counter1 and counter2, then answer the questions below.
   
-  1. What is the difference between counter1 and counter2?
+  1. What is the difference between counter1 and counter2? counter1 will have a memory of the previous invocation. this will allow it to count up so each invocation would look like '1,2,3,4,5...' where as counter2 will not have a memory and each invocation would look like '1,1,1,1,1...'
   
-  2. Which of the two uses a closure? How can you tell?
+  2. Which of the two uses a closure? How can you tell? counter1 uses a closure. this is apparent with the added variable 'counter1 = counterMaker'
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?  counter1 would be preferable for keeping score perhaps in a game. since every invocation is adding to the previous one it would be able to add a new point and give the correct score.
+     At the moment i cannot think of a time when counter2 would be useful but im sure there are times when it could be.
 */
 
 // counter1 code
@@ -64,8 +65,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random()) * Math.floor((3));
 }
 
 
@@ -83,10 +84,19 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(inningScore, innings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i=0; i< innings; i++){
+    homeScore = homeScore + inningScore();
+    awayScore = awayScore + inningScore();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
 }
-
+console.log(finalScore(inning,9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -101,11 +111,14 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningScore) {
+  return{
+    Home: inningScore(),
+    Away: inningScore()
+  }
 
 }
-
+console.log(getInningScore(inning));
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
